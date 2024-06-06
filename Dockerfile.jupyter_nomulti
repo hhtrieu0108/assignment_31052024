@@ -1,0 +1,38 @@
+# Dockerfile without multi-stage builds
+
+# Use a Python base image
+FROM python:3.9-slim
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set up a non-root user
+ENV NB_USER=trieu \
+    NB_UID=1000 \
+    HOME=/home/trieu\
+    JUPYTER_TOKEN="12345"
+
+RUN adduser --disabled-password \
+    --gecos "Default user" \
+    --uid ${NB_UID} \
+    ${NB_USER}
+
+WORKDIR ${HOME}
+
+# Install Jupyter Notebook
+RUN pip install --no-cache-dir notebook
+
+# Copy test_requirement file and install dependencies
+COPY test_requirement.txt .
+RUN pip install --no-cache-dir -r test_requirement.txt
+
+# Expose Jupyter Notebook port
+EXPOSE 8886
+
+# Switch to non-root user
+USER ${NB_USER}
+
+# Start Jupyter Notebook server
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]

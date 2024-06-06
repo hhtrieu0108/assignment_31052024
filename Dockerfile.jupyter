@@ -1,0 +1,9 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+COPY requirement.txt /app/
+
+RUN pip install -r requirement.txt
+
+CMD jupyter-notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root

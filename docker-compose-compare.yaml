@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  jupyter_no_multi:
+    container_name: no_multi
+    build:
+      context: .
+      dockerfile: Dockerfile.jupyter_nomulti
+    ports:
+      - "8886:8888"
+    volumes:
+      - ./notebooks:/home/trieu/notebooks
+
+  jupyter_multi:
+    container_name: multi
+    build:
+      context: .
+      dockerfile: Dockerfile.jupyter_multi
+    ports:
+      - "8887:8888"
+    volumes:
+      - ./notebooks:/home/trieu/notebooks

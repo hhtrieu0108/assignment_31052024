@@ -1,0 +1,2 @@
+id,first_name,last_name,username,password,active,email,last_login,login_count,fail_login_count,created_on,changed_on,created_by_fk,changed_by_fk
+1,Airflow,Admin,airflow,pbkdf2:sha256:260000$eFUbv4OuWGj5j4Nm$b6eccd052c9ca44c6739022013a90d3142f8ac7e79fb6a9e24d5cf63ffa886d8,True,airflowadmin@example.com,2024-06-03 19:13:32.262036,1,0,2024-06-03 19:13:07.459013,2024-06-03 19:13:07.459020,,

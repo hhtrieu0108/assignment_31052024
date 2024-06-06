@@ -1,0 +1,9 @@
+pandas
+numpy
+jupyter
+selenium
+requests
+bs4
+pyspark
+apache-airflow
+azure-cli
